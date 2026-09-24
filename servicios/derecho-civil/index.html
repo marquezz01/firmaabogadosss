@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derecho Civil | Tu Firma Legal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .inner-hero {
+            background: linear-gradient(100deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop') center/cover;
+            padding: 160px 0 100px;
+            color: white;
+            text-align: center;
+        }
+        .hero-title { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.2rem; opacity: 0.9; color: var(--color-accent); }
+        
+        /* Layout specific styles */
+        .content-section { padding: var(--section-padding); }
+        .grid-2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .grid-3-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .grid-layout { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4rem; }
+        
+        /* Cards & Features */
+        .feature-card { background: var(--color-bg-white); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent); transition: var(--transition); height: 100%;}
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .feature-icon { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 1.5rem; }
+        
+        /* Blog Cards */
+        .blog-card { background: var(--color-bg-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); height: 100%;}
+        .blog-img { width: 100%; height: 250px; object-fit: cover; }
+        .blog-content { padding: 2rem; }
+        .blog-date { color: var(--color-accent); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; display: block; }
+        
+        /* Forms */
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; background: var(--color-bg-white); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #e2e8f0; border-radius: var(--radius-md); font-family: var(--font-body); }
+        
+        /* Service Detail Modern Layout */
+        .service-detail-header { margin-bottom: 2rem; }
+        .service-category-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background: rgba(194, 147, 82, 0.12);
+            color: #92672e;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(194, 147, 82, 0.28);
+        }
+        .service-detail-title {
+            font-size: clamp(2.2rem, 3.5vw, 2.9rem);
+            color: var(--color-primary);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+        .service-lead-paragraph {
+            font-size: 1.15rem;
+            line-height: 1.85;
+            color: #475569;
+        }
+        
+        .service-featured-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.18);
+            margin: 2.5rem 0 3.5rem;
+        }
+        .service-featured-img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .service-featured-image-wrapper:hover .service-featured-img {
+            transform: scale(1.025);
+        }
+        .image-caption-badge {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.25rem;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .image-caption-badge i { color: var(--color-accent); }
+
+        .service-help-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.75rem 2.5rem;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.05);
+        }
+        .sub-label {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+        .service-section-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .service-body-text {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+        }
+        .service-pillar-card {
+            background: #f8fafc;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 18px;
+            padding: 2rem;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-accent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .service-pillar-card:hover {
+            transform: translateY(-5px);
+            background: #ffffff;
+            border-color: rgba(194, 147, 82, 0.4);
+            box-shadow: 0 16px 30px -6px rgba(15, 23, 42, 0.1);
+        }
+        .service-pillar-card:hover::before { opacity: 1; }
+        .pillar-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(194, 147, 82, 0.12);
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.3rem;
+            border: 1px solid rgba(194, 147, 82, 0.25);
+        }
+        .service-pillar-card h4 {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: 0.65rem;
+        }
+        .service-pillar-card p {
+            font-size: 0.96rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+        .pillar-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .pillar-features li {
+            font-size: 0.88rem;
+            color: #334155;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .pillar-features li i {
+            color: var(--color-accent);
+            font-size: 0.8rem;
+        }
+
+        /* Sidebar Styling */
+        .service-sidebar {
+            background: #ffffff;
+            border-radius: 22px;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 12px 30px -6px rgba(15, 23, 42, 0.08);
+            padding: 2.75rem 2rem;
+            position: sticky;
+            top: 120px;
+        }
+        .sidebar-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            background: rgba(37, 211, 102, 0.1);
+            color: #15803d;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(37, 211, 102, 0.25);
+        }
+        .sidebar-icon-wrap {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
+            background: rgba(194, 147, 82, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(194, 147, 82, 0.25);
+        }
+        .sidebar-icon-wrap .sidebar-icon {
+            font-size: 2.2rem;
+            color: var(--color-accent);
+            margin-bottom: 0;
+        }
+        .sidebar-title {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+        .sidebar-text {
+            font-size: 0.96rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.75rem;
+        }
+        .sidebar-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            padding: 1rem 1.5rem;
+            font-size: 1.02rem;
+            font-weight: 700;
+            border-radius: 12px;
+        }
+        .sidebar-other-services {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: left;
+        }
+        .sidebar-other-services h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #94a3b8;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+        .other-services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .other-services-list li a {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: all 0.25s ease;
+        }
+        .other-services-list li a i:first-child {
+            color: var(--color-accent);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        .other-services-list li a .list-arrow {
+            margin-left: auto;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            transition: transform 0.25s ease;
+        }
+        .other-services-list li a:hover {
+            background: #ffffff;
+            border-color: rgba(194, 147, 82, 0.4);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+            color: var(--color-accent);
+        }
+        .other-services-list li a:hover .list-arrow {
+            transform: translateX(3px);
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 992px) {
+            .grid-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .service-sidebar { position: static; }
+            .service-pillars-grid { grid-template-columns: 1fr; }
+            .service-featured-img { height: 280px; }
+        }
+    </style>
+</head>
+<body>    <header id="main-header" class="glass-header">
+        <div class="container header-container">
+            <a href="../../index.html" class="logo">
+                <img src="../../img/logo-abogados.png" alt="AV Consultores Jurídicos" class="logo-img">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item has-dropdown">
+                        <a href="../../servicios/index.html">Servicios <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="../../servicios/derecho-civil/index.html">Derecho Civil</a></li>
+                            <li><a href="../../servicios/derecho-laboral/index.html">Derecho Laboral</a></li>
+                            <li><a href="../../servicios/derecho-administrativo/index.html">Derecho Administrativo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../../nuestra-firma/index.html">Nuestra Firma</a></li>
+                    <li class="nav-item"><a href="../../contacto/index.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="../../contacto/index.html" class="btn btn-primary cta-agenda">Agenda una Consulta</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Abrir menÃº"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>    <section class="inner-hero">
+        <div class="container">
+            <div class="rules-badge" style="margin: 0 auto 1.25rem; display: inline-flex;">
+                <span class="pulse-dot"></span>
+                <i class="fas fa-scale-balanced"></i>
+                <span>Área de Práctica</span>
+            </div>
+            <h1 class="hero-title">Derecho <span class="title-accent">Civil</span></h1>
+            <p class="hero-subtitle">Soluciones jurídicas estratégicas, patrimoniales y contractuales</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container grid-layout">
+            <!-- Contenido Principal -->
+            <article class="main-text">
+                <header class="service-detail-header">
+                    <span class="service-category-tag">
+                        <i class="fas fa-bookmark"></i> Asesoría & Litigio Civil
+                    </span>
+                    <h2 class="service-detail-title">Especialistas en Derecho Civil</h2>
+                    <p class="service-lead-paragraph">
+                        Brindamos orientación y asesoría jurídica en asuntos relacionados con las relaciones civiles, patrimoniales y familiares, atendiendo las circunstancias particulares de cada caso y analizando las diferentes alternativas jurídicas disponibles. Nuestra práctica comprende el acompañamiento en controversias, obligaciones, relaciones contractuales, asuntos familiares, patrimoniales y de responsabilidad, así como en mecanismos de conciliación y demás herramientas jurídicas orientadas a la prevención y solución de conflictos. Nuestro propósito es ofrecer una asesoría clara y oportuna que permita identificar los derechos, obligaciones y alternativas de actuación aplicables a cada situación.
+                    </p>
+                </header>
+
+                <div class="service-featured-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" class="service-featured-img" alt="Especialistas en Derecho Civil">
+                    <div class="image-caption-badge">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Respaldo & Seguridad Jurídica</span>
+                    </div>
+                </div>
+                
+                <section class="service-help-block">
+                    <div class="section-title-wrap">
+                        <span class="sub-label">Metodología de Trabajo</span>
+                        <h3 class="service-section-title">¿Cómo te ayudamos?</h3>
+                    </div>
+                    
+                    <p class="service-body-text">
+                        A través de nuestra metodología de trabajo en el área Civil, nos enfocamos en brindarle soluciones precisas y efectivas. Analizamos a profundidad su caso para proteger su patrimonio, asegurar el cumplimiento de sus contratos y defender sus intereses familiares.
+                    </p>
+                    
+                    <!-- Tarjetas Diagramadas con Estilo Moderno -->
+                    <div class="service-pillars-grid">
+                        <div class="service-pillar-card">
+                            <div class="pillar-card-icon">
+                                <i class="fas fa-file-signature"></i>
+                            </div>
+                            <div class="pillar-card-body">
+                                <h4>Consultoría Integral</h4>
+                                <p>Asesoría preventiva y acompañamiento en la estructuración, revisión y negociación de contratos civiles.</p>
+                                <ul class="pillar-features">
+                                    <li><i class="fas fa-check"></i> Diagnóstico preventivo</li>
+                                    <li><i class="fas fa-check"></i> Redacción contractual</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="service-pillar-card">
+                            <div class="pillar-card-icon">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div class="pillar-card-body">
+                                <h4>Representación Legal</h4>
+                                <p>Defensa técnica y representación judicial en procesos declarativos, ejecutivos y de responsabilidad civil.</p>
+                                <ul class="pillar-features">
+                                    <li><i class="fas fa-check"></i> Defensa en litigios civiles</li>
+                                    <li><i class="fas fa-check"></i> Mecanismos de conciliación</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+            
+            <!-- Barra Lateral / Sidebar de Asesoría -->
+            <aside class="sidebar service-sidebar">
+                <div class="sidebar-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Atención Inmediata</span>
+                </div>
+                <div class="sidebar-icon-wrap">
+                    <i class="fas fa-scale-balanced sidebar-icon"></i>
+                </div>
+                <h3 class="sidebar-title">¿Necesitas asesoría?</h3>
+                <p class="sidebar-text">Nuestro equipo de abogados especialistas está listo para analizar y respaldar tu caso en Derecho Civil.</p>
+                
+                <a href="../../contacto/index.html" class="btn btn-primary sidebar-btn">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Agendar Consulta</span>
+                </a>
+                
+                <div class="sidebar-other-services">
+                    <h4>Otras Áreas de Práctica</h4>
+                    <ul class="other-services-list">
+                        <li>
+                            <a href="../../servicios/derecho-laboral/index.html">
+                                <i class="fas fa-user-tie"></i>
+                                <span>Derecho Laboral</span>
+                                <i class="fas fa-arrow-right list-arrow"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../../servicios/derecho-administrativo/index.html">
+                                <i class="fas fa-landmark"></i>
+                                <span>Derecho Administrativo</span>
+                                <i class="fas fa-arrow-right list-arrow"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </section>    <!-- FOOTER -->
+    <footer class="main-footer dark-bg" style="padding: 2rem 0 0;">
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Tu Firma Legal. Todos los derechos reservados.</p>
+            
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WIDGETS -->
+    <a href="https://wa.me/570000000000" class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="../../main.js"></script>
+</body>
+</html>

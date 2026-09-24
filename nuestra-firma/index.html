@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Firma | Tu Firma Legal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .inner-hero {
+            background: linear-gradient(100deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop') center/cover;
+            padding: 160px 0 100px;
+            color: white;
+            text-align: center;
+        }
+        .hero-title { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.2rem; opacity: 0.9; color: var(--color-accent); }
+        
+        /* Layout specific styles */
+        .content-section { padding: var(--section-padding); }
+        .grid-2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .grid-3-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .grid-layout { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4rem; }
+        
+        /* Cards & Features */
+        .feature-card { background: var(--color-bg-white); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent); transition: var(--transition); height: 100%;}
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .feature-icon { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 1.5rem; }
+        
+        /* Blog Cards */
+        .blog-card { background: var(--color-bg-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); height: 100%;}
+        .blog-img { width: 100%; height: 250px; object-fit: cover; }
+        .blog-content { padding: 2rem; }
+        .blog-date { color: var(--color-accent); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; display: block; }
+        
+        /* Forms */
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; background: var(--color-bg-white); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #e2e8f0; border-radius: var(--radius-md); font-family: var(--font-body); }
+        
+        /* Nuestra Firma Modern Layout */
+        .firm-about-section {
+            background: #ffffff;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .firm-trajectory-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+        .service-category-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background: rgba(194, 147, 82, 0.12);
+            color: #92672e;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(194, 147, 82, 0.28);
+        }
+        .firm-section-title {
+            font-size: clamp(2.3rem, 3.8vw, 3rem);
+            color: var(--color-primary);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+        .firm-lead-p {
+            font-size: 1.15rem;
+            line-height: 1.85;
+            color: #334155;
+            margin-bottom: 1.25rem;
+        }
+        .firm-body-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .firm-badges-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+        .firm-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 1rem 1.25rem;
+            border-radius: 14px;
+        }
+        .firm-badge-item i {
+            font-size: 1.6rem;
+            color: var(--color-accent);
+            background: rgba(194, 147, 82, 0.12);
+            padding: 0.6rem;
+            border-radius: 10px;
+        }
+        .firm-badge-item strong {
+            display: block;
+            color: var(--color-primary);
+            font-size: 0.95rem;
+        }
+        .firm-badge-item span {
+            display: block;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .firm-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 14px;
+        }
+
+        .firm-image-frame {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.18);
+        }
+        .firm-hero-img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .firm-image-frame:hover .firm-hero-img {
+            transform: scale(1.03);
+        }
+        .firm-float-card {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(10px);
+            padding: 1.15rem 1.5rem;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            border: 1px solid rgba(194, 147, 82, 0.3);
+            color: #ffffff;
+        }
+        .firm-float-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(194, 147, 82, 0.2);
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .float-card-title {
+            display: block;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+        .float-card-sub {
+            display: block;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        /* Bloque Valores */
+        .firm-values-section {
+            background: #f8fafc;
+        }
+        .values-header {
+            margin-bottom: 3.5rem;
+        }
+        .sub-label {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+        .title-divider {
+            width: 50px;
+            height: 3px;
+            background: var(--color-accent);
+            margin: 1rem auto 1.25rem;
+            border-radius: 2px;
+        }
+        .values-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .values-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .value-card {
+            background: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 22px;
+            padding: 2.5rem 2rem;
+            transition: all 0.35s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+        }
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(194, 147, 82, 0.4);
+            box-shadow: 0 18px 36px -6px rgba(15, 23, 42, 0.12);
+        }
+        .value-card.value-featured {
+            background: linear-gradient(145deg, #ffffff 0%, rgba(248, 250, 252, 0.95) 100%);
+            border-color: rgba(194, 147, 82, 0.38);
+            box-shadow: 0 10px 28px -4px rgba(194, 147, 82, 0.15);
+        }
+        .value-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .value-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.05);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .value-card:hover .value-icon-box {
+            transform: scale(1.08) rotate(-4deg);
+        }
+        .value-icon-box.icon-gold {
+            background: rgba(194, 147, 82, 0.15);
+            color: var(--color-accent);
+            border-color: rgba(194, 147, 82, 0.35);
+        }
+        .value-num {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            color: #e2e8f0;
+            line-height: 1;
+        }
+        .value-card h3 {
+            font-size: 1.45rem;
+            color: var(--color-primary);
+            font-weight: 800;
+            margin-bottom: 0.85rem;
+        }
+        .value-card p {
+            font-size: 0.98rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .value-highlight {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .value-highlight i {
+            color: var(--color-accent);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 992px) {
+            .firm-trajectory-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .values-cards-grid { grid-template-columns: 1fr; }
+            .firm-hero-img { height: 320px; }
+            .firm-badges-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>    <header id="main-header" class="glass-header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../img/logo-abogados.png" alt="AV Consultores Jurídicos" class="logo-img">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item has-dropdown">
+                        <a href="../servicios/index.html">Servicios <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="../servicios/derecho-civil/index.html">Derecho Civil</a></li>
+                            <li><a href="../servicios/derecho-laboral/index.html">Derecho Laboral</a></li>
+                            <li><a href="../servicios/derecho-administrativo/index.html">Derecho Administrativo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item is-current"><a href="../nuestra-firma/index.html" aria-current="page">Nuestra Firma</a></li>
+                    <li class="nav-item"><a href="../contacto/index.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="../contacto/index.html" class="btn btn-primary cta-agenda">Agenda una Consulta</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Abrir menÃº"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>    <section class="inner-hero firm-hero">
+        <div class="container">
+            <div class="rules-badge" style="margin: 0 auto 1.25rem; display: inline-flex;">
+                <span class="pulse-dot"></span>
+                <i class="fas fa-building-shield"></i>
+                <span>Nuestra Firma</span>
+            </div>
+            <h1 class="hero-title">Quiénes <span class="title-accent">Somos</span></h1>
+            <p class="hero-subtitle">Trayectoria, rigor jurídico y compromiso inquebrantable con la justicia</p>
+        </div>
+    </section>
+    
+    <!-- Bloque 1: Trayectoria y Excelencia -->
+    <section class="content-section firm-about-section">
+        <div class="container">
+            <div class="firm-trajectory-grid">
+                <!-- Columna Texto -->
+                <div class="firm-text-col">
+                    <span class="service-category-tag">
+                        <i class="fas fa-users"></i> Quiénes Somos
+                    </span>
+                    <h2 class="firm-section-title">Sobre <span class="title-accent">Nosotros</span></h2>
+                    
+                    <p class="firm-lead-p">
+                        AV Consultores Jurídicos S.A.S. brinda orientación y asesoría legal a personas y empresas, analizando cada situación para construir alternativas jurídicas responsables.
+                    </p>
+                    
+                    <p class="firm-body-p">
+                        Nuestro consultorio virtual elimina barreras geográficas para ofrecer una atención profesional, ética y cercana, asegurando que comprenda sus derechos y los pasos a seguir.
+                    </p>
+
+                    <!-- Puntos Fuertes -->
+                    <h3 style="font-size: 1.2rem; margin-bottom: 1.25rem; color: var(--color-primary);">Pilares de Nuestro Servicio</h3>
+                    
+                    <div class="firm-badges-row" style="margin-bottom: 1.5rem; gap: 1.5rem;">
+                        <div class="firm-badge-item" style="align-items: flex-start; flex: 1;">
+                            <i class="fas fa-shield-check" style="margin-top: 5px;"></i>
+                            <div>
+                                <strong>Ética Probada</strong>
+                                <span style="display: block; margin-top: 4px; font-size: 0.9rem; line-height: 1.4;">Ejercicio del Derecho con absoluta integridad, reserva y lealtad procesal en cada caso asumido.</span>
+                            </div>
+                        </div>
+                        <div class="firm-badge-item" style="align-items: flex-start; flex: 1;">
+                            <i class="fas fa-search" style="margin-top: 5px;"></i>
+                            <div>
+                                <strong>Transparencia Total</strong>
+                                <span style="display: block; margin-top: 4px; font-size: 0.9rem; line-height: 1.4;">Información precisa y sin falsas expectativas, con alcance y condiciones claros desde el diagnóstico preliminar.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="firm-badges-row" style="gap: 1.5rem;">
+                        <div class="firm-badge-item" style="align-items: flex-start; flex: 1;">
+                            <i class="fas fa-chart-line" style="margin-top: 5px;"></i>
+                            <div>
+                                <strong>Resultados Medibles</strong>
+                                <span style="display: block; margin-top: 4px; font-size: 0.9rem; line-height: 1.4;">Enfoque orientado a mitigar riesgos, proteger derechos y consolidar metas jurídicas tangibles.</span>
+                            </div>
+                        </div>
+                        <div class="firm-badge-item" style="align-items: flex-start; flex: 1;">
+                            <i class="fas fa-bullseye" style="margin-top: 5px;"></i>
+                            <div>
+                                <strong>Soluciones Reales</strong>
+                                <span style="display: block; margin-top: 4px; font-size: 0.9rem; line-height: 1.4;">Estrategias legales prácticas y efectivas que responden a las necesidades concretas de su situación o modelo de negocio.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Imagen con Tarjeta Flotante -->
+                <div class="firm-image-col">
+                    <div class="firm-image-frame">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?q=80&w=1632&auto=format&fit=crop" class="firm-hero-img" alt="Nuestra Firma Legal">
+                        <div class="firm-float-card">
+                            <div class="firm-float-icon">
+                                <i class="fas fa-scale-balanced"></i>
+                            </div>
+                            <div>
+                                <span class="float-card-title">Defensa Integral</span>
+                                <span class="float-card-sub">Compromiso ético con cada usuario</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bloque 2: Nuestros Valores -->
+    <section class="content-section firm-values-section">
+        <div class="container">
+            <div class="values-header text-center">
+                <span class="sub-label">Nuestro Norte</span>
+                <h2 class="firm-section-title">Misión y <span class="title-accent">Visión</span></h2>
+                <div class="title-divider"></div>
+                <p class="values-subtitle">Los pilares fundamentales que guían nuestro ejercicio profesional y la atención a cada usuario.</p>
+            </div>
+
+            <div class="values-cards-grid">
+                <!-- Valor 1: Misión -->
+                <div class="value-card">
+                    <div class="value-card-top">
+                        <div class="value-icon-box">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <span class="value-num">01</span>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Facilitar el acceso a soluciones legales mediante una atención profesional y cercana. Brindamos orientación inicial para que conozca sus derechos y alternativas con total transparencia.</p>
+                    <div class="value-highlight">
+                        <i class="fas fa-check"></i> Orientación clara y accesible
+                    </div>
+                </div>
+
+                <!-- Valor 2: Visión (Destacada) -->
+                <div class="value-card value-featured">
+                    <div class="value-card-top">
+                        <div class="value-icon-box icon-gold">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <span class="value-num">02</span>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Consolidarnos en Colombia como firma referente en servicios legales, integrando innovación tecnológica para ser el aliado estratégico de nuestros clientes y ampliar nuestra cobertura.</p>
+                    <div class="value-highlight">
+                        <i class="fas fa-check"></i> Innovación y alcance nacional
+                    </div>
+                </div>
+
+                <!-- Valor 3: Valores -->
+                <div class="value-card">
+                    <div class="value-card-top">
+                        <div class="value-icon-box">
+                            <i class="fas fa-scale-balanced"></i>
+                        </div>
+                        <span class="value-num">03</span>
+                    </div>
+                    <h3>Valores</h3>
+                    <p>Desarrollamos nuestra actividad bajo los más altos estándares de ética, responsabilidad, confidencialidad, transparencia y rigor jurídico para asegurar su tranquilidad.</p>
+                    <div class="value-highlight">
+                        <i class="fas fa-check"></i> Ética y rigor profesional
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- FOOTER -->
+    <footer class="main-footer dark-bg" style="padding: 2rem 0 0;">
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Tu Firma Legal. Todos los derechos reservados.</p>
+            
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WIDGETS -->
+    <a href="https://wa.me/570000000000" class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="../main.js"></script>
+</body>
+</html>

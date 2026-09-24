@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título de Página | Tu Firma Legal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .inner-hero {
+            background: linear-gradient(100deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%), url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop') center/cover;
+            padding: 160px 0 100px;
+            color: white;
+            text-align: center;
+        }
+        .hero-title { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.2rem; opacity: 0.9; color: var(--color-accent); }
+        
+        /* Layout specific styles */
+        .content-section { padding: var(--section-padding); }
+        .grid-2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .grid-3-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .grid-layout { display: grid; grid-template-columns: 2.5fr 1fr; gap: 4rem; }
+        
+        /* Cards & Features */
+        .feature-card { background: var(--color-bg-white); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent); transition: var(--transition); height: 100%;}
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .feature-icon { font-size: 2.5rem; color: var(--color-accent); margin-bottom: 1.5rem; }
+        
+        /* Blog Cards */
+        .blog-card { background: var(--color-bg-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); height: 100%;}
+        .blog-img { width: 100%; height: 250px; object-fit: cover; }
+        .blog-content { padding: 2rem; }
+        .blog-date { color: var(--color-accent); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; display: block; }
+        
+        /* Forms */
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; background: var(--color-bg-white); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #e2e8f0; border-radius: var(--radius-md); font-family: var(--font-body); }
+        
+        /* Sidebar */
+        .sidebar { background: #f8fafc; padding: 2.5rem; border-radius: 12px; border: 1px solid #e2e8f0; position: sticky; top: 100px; text-align: center; height: fit-content; }
+        .sidebar-icon { font-size: 3.5rem; color: var(--color-accent); margin-bottom: 1.5rem; }
+        
+        @media (max-width: 992px) {
+            .grid-2-cols, .grid-layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+    </style>
+</head>
+<body>    <header id="main-header" class="glass-header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../img/logo-abogados.png" alt="AV Consultores Jurídicos" class="logo-img">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item has-dropdown">
+                        <a href="../servicios/index.html">Servicios <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="../servicios/derecho-civil/index.html">Derecho Civil</a></li>
+                            <li><a href="../servicios/derecho-laboral/index.html">Derecho Laboral</a></li>
+                            <li><a href="../servicios/derecho-administrativo/index.html">Derecho Administrativo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="../nuestra-firma/index.html">Nuestra Firma</a></li>
+                    <li class="nav-item"><a href="../contacto/index.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="../contacto/index.html" class="btn btn-primary cta-agenda">Agenda una Consulta</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Abrir menÃº"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>    <section class="inner-hero">
+        <div class="container">
+            <h1 class="hero-title">Nuestras Áreas</h1>
+            <p class="hero-subtitle">Lorem ipsum práctica y especialización</p>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: var(--color-bg-light);">
+        <div class="container">
+            <div class="grid-3-cols">
+                <div class="feature-card text-center">
+                    <i class="fas fa-scale-balanced feature-icon"></i>
+                    <h3>Derecho Civil</h3>
+                    <p style="margin: 1rem 0 1.5rem; color: var(--color-text-muted);">Asesoría integral en contratos, obligaciones, responsabilidad civil, bienes y resolución efectiva de controversias.</p>
+                    <a href="derecho-civil/index.html" class="btn btn-primary" style="width:100%;">Saber más</a>
+                </div>
+                <div class="feature-card text-center">
+                    <i class="fas fa-user-tie feature-icon"></i>
+                    <h3>Derecho Laboral</h3>
+                    <p style="margin: 1rem 0 1.5rem; color: var(--color-text-muted);">Soluciones estratégicas en relaciones laborales, contratación, régimen de seguridad social y defensa en litigios.</p>
+                    <a href="derecho-laboral/index.html" class="btn btn-primary" style="width:100%;">Saber más</a>
+                </div>
+                <div class="feature-card text-center">
+                    <i class="fas fa-landmark feature-icon"></i>
+                    <h3>Derecho Administrativo</h3>
+                    <p style="margin: 1rem 0 1.5rem; color: var(--color-text-muted);">Representación ante entidades del Estado, procesos sancionatorios, contratación pública y demandas contenciosas.</p>
+                    <a href="derecho-administrativo/index.html" class="btn btn-primary" style="width:100%;">Saber más</a>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- FOOTER -->
+    <footer class="main-footer dark-bg" style="padding: 2rem 0 0;">
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Tu Firma Legal. Todos los derechos reservados.</p>
+            
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WIDGETS -->
+    <a href="https://wa.me/570000000000" class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="../main.js"></script>
+</body>
+</html>
